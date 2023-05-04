@@ -5,16 +5,16 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
     private String team;
     private String player;
     private int rnd;
-    private float acs;
-    private float kd;
-    private float kast;
-    private float adr;
-    private float kpr;
-    private float apr;
-    private float fkpr;
-    private float fdpr;
-    private float hs;
-    private float cl;
+    private double acs;
+    private double kd;
+    private double kast;
+    private double adr;
+    private double kpr;
+    private double apr;
+    private double fkpr;
+    private double fdpr;
+    private double hs;
+    private double cl;
     private int clutches;
     private int kmax;
     private int k;
@@ -23,17 +23,17 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
     private int fk;
     private int fd;
     private int fkfd;
-    private float openingDuelWinRate;
-    private float fkfdRatio;
+    private double openingDuelWinRate;
+    private double fkfdRatio;
 
     public Valorant() {
         this("Unknown", "Unknown", "Unknown",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
     }
 
-    public Valorant(String region, String team, String player, int rnd, float acs, float kd, float kast,
-                    float adr, float kpr, float apr, float fkpr, float fdpr, float hs, float cl,
+    public Valorant(String region, String team, String player, int rnd, double acs, double kd, double kast,
+                    double adr, double kpr, double apr, double fkpr, double fdpr, double hs, double cl,
                     int clutches, int kmax, int k, int d, int a, int fk, int fd, int fkfd,
-                    float openingDuelWinRate, float fkfdRatio) {
+                    double openingDuelWinRate, double fkfdRatio) {
         this.region = region;
         this.team = team;
         this.player = player;
@@ -72,7 +72,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         return team;
     }
 
-    public float getKd() {
+    public double getKd() {
         return kd;
     }
 
@@ -92,7 +92,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.rnd = rnd;
     }
 
-    public float getAcs() {
+    public double getAcs() {
         return acs;
     }
 
@@ -104,7 +104,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.kd = kd;
     }
 
-    public float getKast() {
+    public double getKast() {
         return kast;
     }
 
@@ -112,7 +112,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.kast = kast;
     }
 
-    public float getAdr() {
+    public double getAdr() {
         return adr;
     }
 
@@ -120,7 +120,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.adr = adr;
     }
 
-    public float getKpr() {
+    public double getKpr() {
         return kpr;
     }
 
@@ -128,7 +128,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.kpr = kpr;
     }
 
-    public float getApr() {
+    public double getApr() {
         return apr;
     }
 
@@ -136,7 +136,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.apr = apr;
     }
 
-    public float getFkpr() {
+    public double getFkpr() {
         return fkpr;
     }
 
@@ -144,7 +144,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.fkpr = fkpr;
     }
 
-    public float getFdpr() {
+    public double getFdpr() {
         return fdpr;
     }
 
@@ -152,7 +152,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.fdpr = fdpr;
     }
 
-    public float getHs() {
+    public double getHs() {
         return hs;
     }
 
@@ -160,7 +160,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.hs = hs;
     }
 
-    public float getCl() {
+    public double getCl() {
         return cl;
     }
 
@@ -232,7 +232,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.fkfd = fkfd;
     }
 
-    public float getOpeningDuelWinRate() {
+    public double getOpeningDuelWinRate() {
         return openingDuelWinRate;
     }
 
@@ -240,7 +240,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.openingDuelWinRate = openingDuelWinRate;
     }
 
-    public float getFkfdRatio() {
+    public double getFkfdRatio() {
         return fkfdRatio;
     }
 

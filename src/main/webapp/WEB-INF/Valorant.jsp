@@ -36,12 +36,12 @@
 
 </header>
 <div class="container my-4">
-    <p class="lead">Showing <%= pros.size() %> Pros <%= pros.size() == 1 %></p>
+    <p class="lead">Showing <%= pros.size() %> Pros </p>
     <div class="row">
         <% for(Valorant pro: pros) { %>
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="card mb-4" style="width: 18rem;">
-                <img src="https://valorant-esports.fandom.com/wiki/<%=pro.getPlayer().toLowerCase()%>.png" class="card-img-top" alt="Flag of <%= pro.getPlayer() %>" height="200">
+                <img src="https://valorant-esports.fandom.com/wiki/Category:Player_Images?file=<%=pro.getPlayer()%>_2020.png" class="card-img-top" alt="player <%= pro.getPlayer() %>" height="200">
                 <div class="card-body">
                     <h5 class="card-title"><%= pro.getPlayer() %></h5>
                     <p class="card-text">Region: <%= pro.getRegion() %>
@@ -60,7 +60,7 @@
 </div>
 
 <div class=" modal fade" id="valorantModal" tabindex="-1" aria-labelledby="valorantModalLabel" aria-hidden="true">
-    <% for(Valorant pro : pros) { %>
+    <% for(Valorant pro: pros) { %>
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
@@ -68,8 +68,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Region: <span class="modal-region"> <%= pro.getRegion()%> </span>
-                    <br>Population: <span class="modal-population"> <%= pro.getTeam() %></span></p>
+                <p>
+                    Region: <span class="modal-region"> <%= pro.getRegion()%> </span>
+                    <br>Team: <span class="modal-team" > <%= pro.getTeam() %> <img src="https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png" height="200" width="200"></span>
+                    <br>Kill/Death Ratio: <span class="modal-kd"> <%= pro.getKd() %></span>
+                    <br>Average Combat Score: <span class="modal-acs"> <%= pro.getAcs() %></span>
+              </p>
             </div>
         </div>
     </div>
