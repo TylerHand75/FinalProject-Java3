@@ -40,18 +40,45 @@ public class ValorantServlet extends HttpServlet {
         }
 
         String search = request.getParameter("search");
+        List<Valorant> matchingRegions = new ArrayList<>();
         if(search != null){
-            String finalSearch = search;
-            prosCopy.removeIf(pro -> !pro.getPlayer().toLowerCase().contains(finalSearch.toLowerCase()));
+            String finalSearch = search.toLowerCase();
+            for (Valorant pro: prosCopy) {
+                if (pro.getPlayer().toLowerCase().contains(finalSearch)) {
+                    matchingRegions.add(pro);
+                }
+            }
+            matchingRegions.sort((p1, p2) -> p1.getPlayer().compareTo(p2.getPlayer()));
         }
         else {
             search = "";
+            matchingRegions.addAll(prosCopy);
+        }
+        String sort = request.getParameter("sort");
+        if (sort == null) {
+            sort = "alphaAZ";
+        }
+        switch (sort) {
+            case "alphaAZ":
+                matchingRegions.sort((p1, p2) -> p1.getPlayer().compareTo(p2.getPlayer()));
+                break;
+            case "alphaZA":
+                matchingRegions.sort((p1, p2) -> p1.getPlayer().compareTo(p2.getPlayer()) * -1);
+                break;
+            case "regionAZ":
+                matchingRegions.sort((p1, p2) -> p1.getRegion().compareTo(p2.getRegion()));
+                break;
+            case "regionZA":
+                matchingRegions.sort((p1, p2) -> p1.getRegion().compareTo(p2.getRegion()) * -1);
+                break;
+
+
         }
 
         request.setAttribute("search", search);
         request.setAttribute("show", show);
-
-        request.setAttribute("pros", prosCopy);
+        request.setAttribute("sort", sort);
+        request.setAttribute("pros", matchingRegions);
 
         request.getRequestDispatcher("WEB-INF/Valorant.jsp").forward(request, response);
     }

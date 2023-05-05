@@ -12,6 +12,11 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("user") != null) {
+            response.sendRedirect(request.getContextPath());
+            return;
+        }
         request.setAttribute("loginFailed", false);
         request.getRequestDispatcher("WEB-INF/Login/login.jsp").forward(request, response);
     }
@@ -43,7 +48,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 // Not match
                 request.setAttribute("loginFailed", true);
-                request.getRequestDispatcher("WEB-INF/Ch5/login.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/Login/login.jsp").forward(request, response);
                 return;
             }
         }

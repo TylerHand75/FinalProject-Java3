@@ -35,27 +35,27 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
                     int clutches, int kmax, int k, int d, int a, int fk, int fd, int fkfd,
                     double openingDuelWinRate, double fkfdRatio) {
         this.region = region;
-        this.team = team;
+        this.team   = team;
         this.player = player;
-        this.rnd = rnd;
-        this.acs = acs;
-        this.kd = kd;
-        this.kast = kast;
-        this.adr = adr;
-        this.kpr = kpr;
-        this.apr = apr;
-        this.fkpr = fkpr;
-        this.fdpr = fdpr;
-        this.hs = hs;
-        this.cl = cl;
+        this.rnd    = rnd;
+        this.acs    = acs;
+        this.kd     = kd;
+        this.kast   = kast;
+        this.adr    = adr;
+        this.kpr    = kpr;
+        this.apr    = apr;
+        this.fkpr   = fkpr;
+        this.fdpr   = fdpr;
+        this.hs     = hs;
+        this.cl     = cl;
         this.clutches = clutches;
-        this.kmax = kmax;
-        this.k = k;
-        this.d = d;
-        this.a = a;
-        this.fk = fk;
-        this.fd = fd;
-        this.fkfd = fkfd;
+        this.kmax   = kmax;
+        this.k      = k;
+        this.d      = d;
+        this.a      = a;
+        this.fk     = fk;
+        this.fd     = fd;
+        this.fkfd   = fkfd;
         this.openingDuelWinRate = openingDuelWinRate;
         this.fkfdRatio = fkfdRatio;
     }
@@ -252,6 +252,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
     @Override
     public int compareTo(Valorant o) {
         return this.player.compareTo(o.player);
+
     }
 
     @Override

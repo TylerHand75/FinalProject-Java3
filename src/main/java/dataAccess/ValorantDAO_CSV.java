@@ -10,8 +10,8 @@ import java.util.*;
 public class ValorantDAO_CSV {
 
     public static List<Valorant> getAll(HttpServletRequest request, HttpServletResponse response) {
-        List<Valorant> pros = new ArrayList<>();
 
+        List<Valorant> pros = new ArrayList<>();
         try(Scanner scanner = new Scanner(new File(request.getServletContext().getRealPath("/WEB-INF/CSVFiles/ValorantData.csv")))) {
             int lineCount = 0;
             while (scanner.hasNext()) {
@@ -47,8 +47,8 @@ public class ValorantDAO_CSV {
                     pros.add(val);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch(FileNotFoundException e) {
+            System.out.println("File not found");
         }
 
         return pros;
