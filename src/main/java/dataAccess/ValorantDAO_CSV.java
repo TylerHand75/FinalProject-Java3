@@ -30,15 +30,15 @@ public class ValorantDAO_CSV {
                     String region = values[0];
                     String team = values[1];
                     String player = values[2];
-                    int acs = Integer.parseInt(values[3]);
-                    double kd = Double.parseDouble(values[4]);
-                    double kast = Double.parseDouble(values[5]);
-                    double hs = Double.parseDouble(values[6]);
-                    int clutches = Integer.parseInt(values[7]);
-                    int k = Integer.parseInt(values[8]);
-                    int d = Integer.parseInt(values[9]);
-                    int a = Integer.parseInt(values[10]);
-                    double openingDuelWinRate = Double.parseDouble(values[11]);
+                    String acs = values[3];
+                    String kd = values[4];
+                    String kast = values[5];
+                    String hs = values[6];
+                    String clutches = values[7];
+                    String k = values[8];
+                    String  d = values[9];
+                    String  a = values[10];
+                    String openingDuelWinRate = values[11];
                     Valorant proPlayers = new Valorant(region, team, player, acs, kd, kast, hs, clutches, k, d, a, openingDuelWinRate);
                     daoProPlayers.add(proPlayers);
                 }
@@ -114,9 +114,12 @@ public class ValorantDAO_CSV {
         }
     }
 
-    public void add(Valorant newPro) {
-        daoProPlayers.add(newPro);
-
+    public int add(Valorant newPro) {
+        if (daoProPlayers.add(newPro) )
+            return 1;
+        else{
+            return 0;
+        }
     }
 }
 

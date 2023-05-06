@@ -8,22 +8,22 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
     private String region;
     private String team;
     private String player;
-    private int acs;
-    private double kd;
-    private double kast;
-    private double hs;
-    private int clutches;
-    private int k;
-    private int d;
-    private int a;
-    private double openingDuelWinRate;
+    private String acs;
+    private String kd;
+    private String kast;
+    private String hs;
+    private String clutches;
+    private String k;
+    private String d;
+    private String a;
+    private String openingDuelWinRate;
 
 
     public Valorant() {
-        this("Unknown", "Unknown", "Unknown",0,0,0,0,0,0,0,0,0);
+        this("Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown");
     }
 
-    public Valorant(String region,String team,String player, int acs, double kd, double kast, double hs, int clutches, int k,int d,int a, double openingDuelWinRate) {
+    public Valorant(String region,String team,String player, String acs, String kd, String kast, String hs, String clutches, String k,String d,String a, String openingDuelWinRate) {
         this.region = region;
         this.team   = team;
         this.player = player;
@@ -54,7 +54,7 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
         this.team = team;
     }
 
-    public double getKd() {
+    public String getKd() {
         return kd;
     }
 
@@ -67,71 +67,71 @@ public class Valorant implements Comparable<Valorant>, Cloneable {
     }
 
 
-    public int getAcs() {
+    public String getAcs() {
         return acs;
     }
 
-    public void setAcs(int acs) {
+    public void setAcs(String acs) {
         this.acs = acs;
     }
 
-    public void setKd(double kd) {
+    public void setKd(String kd) {
         this.kd = kd;
     }
 
-    public double getKast() {
+    public String getKast() {
         return kast;
     }
 
-    public void setKast(double kast) {
+    public void setKast(String kast) {
         this.kast = kast;
     }
 
-    public double getHs() {
+    public String getHs() {
         return hs;
     }
 
-    public void setHs(double hs) {
+    public void setHs(String hs) {
         this.hs = hs;
     }
 
-    public int getClutches() {
+    public String getClutches() {
         return clutches;
     }
 
-    public void setClutches(int clutches) {
+    public void setClutches(String clutches) {
         this.clutches = clutches;
     }
 
-    public int getK() {
+    public String getK() {
         return k;
     }
 
-    public void setK(int k) {
+    public void setK(String k) {
         this.k = k;
     }
 
-    public int getD() {
+    public String getD() {
         return d;
     }
 
-    public void setD(int d) {
+    public void setD(String d) {
         this.d = d;
     }
 
-    public int getA() {
+    public String getA() {
         return a;
     }
 
-    public void setA(int a) {
+    public void setA(String a) {
         this.a = a;
     }
 
-    public double getOpeningDuelWinRate() {
+    public String getOpeningDuelWinRate() {
         return openingDuelWinRate;
     }
 
-    public void setOpeningDuelWinRate(double openingDuelWinRate) {
+    public void setOpeningDuelWinRate(String openingDuelWinRate) {
         this.openingDuelWinRate = openingDuelWinRate;
     }
 

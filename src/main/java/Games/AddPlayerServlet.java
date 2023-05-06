@@ -27,7 +27,7 @@ public class AddPlayerServlet extends HttpServlet {
         UserDAO_MySQL user_data = new UserDAO_MySQL();
         request.setAttribute("users",user_data.getAll());
         User user = (User)session.getAttribute("user");
-        if(user.getPrivileges().equals("none")) {
+        if(user.getPrivileges().equals("premium")) {
             request.getRequestDispatcher("WEB-INF/addPlayer.jsp").forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath()); // Send them to the homepage
@@ -39,89 +39,89 @@ public class AddPlayerServlet extends HttpServlet {
         String region = request.getParameter("region");
         String team = request.getParameter("team");
         String player = request.getParameter("player");
-        int acs = Integer.parseInt(request.getParameter("acs"));
-        double kd = Double.parseDouble(request.getParameter("kd"));
-        double kast = Double.parseDouble(request.getParameter("kast"));
-        double hs = Double.parseDouble(request.getParameter("hs"));
-        int clutches = Integer.parseInt(request.getParameter("clutches"));
-        int k = Integer.parseInt(request.getParameter("k"));
-        int d = Integer.parseInt(request.getParameter("d"));
-        int a = Integer.parseInt(request.getParameter("a"));
-        double openingDuelWinRate = Double.parseDouble(request.getParameter("openingDuelWinRate"));
+        String  acs = request.getParameter("acs");
+        String kd = request.getParameter("kd");
+        String kast = request.getParameter("kast");
+        String hs = request.getParameter("hs");
+        String  clutches = request.getParameter("clutches");
+        String  k = request.getParameter("k");
+        String d = request.getParameter("d");
+        String a = request.getParameter("a");
+        String openingDuelWinRate = request.getParameter("openingDuelWinRate");
         Map<String, String> results = new HashMap<>();
         Valorant newPro = new Valorant();
         try {
             newPro.setRegion(region);
         } catch(IllegalArgumentException e) {
             results.put("regionError", e.getMessage());
-            results.put("regionInvalid", "is-invalid");
+
         }
         try {
             newPro.setTeam(team);
         } catch(IllegalArgumentException e) {
             results.put("teamError", e.getMessage());
-            results.put("teamInvalid", "is-invalid");
+
         }
         try {
             newPro.setPlayer(player);
         } catch(IllegalArgumentException e) {
             results.put("playerError", e.getMessage());
-            results.put("playerInvalid", "is-invalid");
+
         }
 
         try {
             newPro.setAcs(acs);
         } catch (NumberFormatException e) {
-            results.put("acsError", "Invalid ACS input");
-            results.put("acsInvalid", "is-invalid");
+            results.put("acsError", e.getMessage());
+
         }
         try {
             newPro.setKd(kd);
         } catch (NumberFormatException e) {
-            results.put("kdError", "Invalid KD input");
-            results.put("kdInvalid", "is-invalid");
+            results.put("kdError", e.getMessage());
+
         }
         try {
             newPro.setKast(kast);
         } catch (NumberFormatException e) {
-            results.put("kastError", "Invalid KAST input");
-            results.put("kastInvalid", "is-invalid");
+            results.put("kastError",e.getMessage());
+
         }
         try {
             newPro.setHs(hs);
         } catch (NumberFormatException e) {
-            results.put("hsError", "Invalid HS input");
-            results.put("hsInvalid", "is-invalid");
+            results.put("hsError", e.getMessage());
+
         }
         try {
             newPro.setClutches(clutches);
         } catch (NumberFormatException e) {
-            results.put("clutchesError", "Invalid Clutches input");
-            results.put("clutchesInvalid", "is-invalid");
+            results.put("clutchesError", e.getMessage());
+
         }
         try {
             newPro.setK(k);
         } catch (NumberFormatException e) {
-            results.put("kError", "Invalid K input");
-            results.put("kInvalid", "is-invalid");
+            results.put("kError", e.getMessage());
+
         }
         try {
             newPro.setD(d);
         } catch (NumberFormatException e) {
-            results.put("dError", "Invalid D input");
-            results.put("dInvalid", "is-invalid");
+            results.put("dError", e.getMessage());
+
         }
         try {
             newPro.setA(a);
         } catch (NumberFormatException e) {
-            results.put("aError", "Invalid A input");
-            results.put("aInvalid", "is-invalid");
+            results.put("aError", e.getMessage());
+            ;
         }
         try {
             newPro.setOpeningDuelWinRate(openingDuelWinRate);
         } catch (NumberFormatException e) {
-            results.put("openingDuelWinRateError", "Invalid Opening Duel Win Rate input");
-            results.put("openingDuelWinRateInvalid", "is-invalid");
+            results.put("openingDuelWinRateError", e.getMessage());
+
         }
 
         if (!results.isEmpty()) {
@@ -129,11 +129,42 @@ public class AddPlayerServlet extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/addPlayer.jsp").forward(request, response);
             return;
         }
+        if(!results.containsKey( "regionError") &&
+                !results.containsKey("teamError") &&
+                !results.containsKey("playerError") &&
+                !results.containsKey("acsError") &&
+                !results.containsKey("kdError") &&
+                !results.containsKey("kastError") &&
+                !results.containsKey("hsError") &&
+                !results.containsKey("clutchesError") &&
+                !results.containsKey("kError") &&
+                !results.containsKey("dError") &&
+                !results.containsKey("aError") &&
+                !results.containsKey("openingDuelWinRateError")
+        ) {
+            ValorantDAO_CSV dao = new ValorantDAO_CSV();
+            int numRowsAffected = dao.add(newPro);
+            if(numRowsAffected == 1) {
+                results.put("success", "Player added successfully!");
+                // TO DO
+            }
+        } else {
+            results.put( "region", region);
+            results.put("team", team);
+            results.put("player", player);
+            results.put("acs", String.valueOf(acs));
+            results.put("kd", String.valueOf(kd));
+            results.put("kast", String.valueOf(kast));
+            results.put("hs", String.valueOf(hs));
+            results.put("clutches", String.valueOf(clutches));
+            results.put("k", String.valueOf(k));
+            results.put("d", String.valueOf(d));
+            results.put("a", String.valueOf(a));
+            results.put("openingDuelWinRate", String.valueOf(openingDuelWinRate));
 
-        ValorantDAO_CSV valorant_data = new ValorantDAO_CSV();
-        valorant_data.add(newPro);
+        }
 
-
+        request.setAttribute("results", results);
         request.setAttribute("playerAdded", "Player added successfully!");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
