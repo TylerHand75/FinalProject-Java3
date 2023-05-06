@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.*;
 
 public class ValorantDAO_CSV {
-    private static final String FILE_NAME = "E:\\School Stuff\\FinalProject-Java3\\src\\main\\webapp\\WEB-INF\\CSVFiles\\ValorantData.csv";
+    private static final String FILE_NAME = "WEB-INF/CSVFiles/ValorantData.csv";
     private static List<Valorant> daoProPlayers = new ArrayList<>();
 
     public static List<Valorant> getAll(HttpServletRequest request, HttpServletResponse response) {
