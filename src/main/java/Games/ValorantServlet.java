@@ -17,7 +17,9 @@ public class ValorantServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(pros == null) {
             pros = ValorantDAO_CSV.getAll(request, response);
+
         }
+
 
         // Clone the list to avoid modifying the original list
         List<Valorant> prosCopy = new ArrayList<>(pros.size());
@@ -71,14 +73,14 @@ public class ValorantServlet extends HttpServlet {
             case "regionZA":
                 matchingRegions.sort((p1, p2) -> p1.getRegion().compareTo(p2.getRegion()) * -1);
                 break;
-
-
         }
+
 
         request.setAttribute("search", search);
         request.setAttribute("show", show);
         request.setAttribute("sort", sort);
         request.setAttribute("pros", matchingRegions);
+
 
         request.getRequestDispatcher("WEB-INF/Valorant.jsp").forward(request, response);
     }

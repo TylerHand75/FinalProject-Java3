@@ -1,10 +1,10 @@
 package dataAccess;
 
 import io.github.cdimascio.dotenv.Dotenv;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface DAO_MySQL<T> {
     default Connection getConnection() throws SQLException {
@@ -29,3 +29,4 @@ public interface DAO_MySQL<T> {
         return myDbConn;
     }
 }
+
