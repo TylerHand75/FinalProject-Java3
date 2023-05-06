@@ -37,6 +37,9 @@ To add a player, you will need to login to the application. Here are the steps t
     Go to the login page URL
     Enter your email and password
     Click the "Login" button
+    If your credentials are correct, you will be redirected to the "Add Player" page where you can add a player to the database.
+    If your credentials are incorrect, you will stay on the login page with an error message.
+    If you are not redirected to the "Add Player" page, you can click the Pro Players link in the navigation bar.
 
 If your credentials are correct, you will be redirected to the "Add Player" page where you can add a player to the database.
 
@@ -44,3 +47,5 @@ If your credentials are incorrect, you will stay on the login page with an error
 Logging Out
 
 To logout, simply close the browser or click the "Logout" button.
+
+I hope you Enjoy the app!
