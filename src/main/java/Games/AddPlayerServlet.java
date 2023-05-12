@@ -166,7 +166,7 @@ public class AddPlayerServlet extends HttpServlet {
 
         request.setAttribute("results", results);
         request.setAttribute("playerAdded", "Player added successfully!");
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/appPlayer.jsp").forward(request, response);
     }
 
 }

@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
                 user.unsetPassword();
                 session.setAttribute("user", user);
                 System.out.printf("User %s logged in%n", user.getEmail());
-                response.sendRedirect(request.getContextPath());
+                request.getRequestDispatcher("WEB-INF/addPlayer.jsp").forward(request, response);
             } else {
                 // Not match
                 request.setAttribute("loginFailed", true);
