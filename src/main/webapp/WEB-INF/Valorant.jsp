@@ -100,13 +100,13 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="valorantModalLabel"><%= pro.getPlayer() %>
+                <h1 class="modal-title fs-5" id="valorantModalLabel<%= pro.getPlayer() %>"><%= pro.getPlayer() %>
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <img src="https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png" height="200"
-                     width="200">
+                     width="200"  alt="<%= pro.getPlayer() %>">
                 <p> Region: <span class="modal-region"> <%= pro.getRegion()%> </span>
                     <br>Team: <span class="modal-team"> <%= pro.getTeam() %>  </span>
                     <br>Kill/Death Ratio: <span class="modal-kd"> <%= pro.getKd() %></span>
